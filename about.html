@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Ozone Fitness Planet</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --bg:#0a0b0c;
+  --bg-2:#141517;
+  --card:#18191b;
+  --card-hi:#202219;
+  --line:#2b2d2f;
+  --red:#39ff88;
+  --red-soft:#8dffb8;
+  --red-deep:#04120a;
+  --white:#f4f5f0;
+  --dim:#b0b5ac;
+  --dimmer:#74796f;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:'Barlow',sans-serif;
+  overflow-x:hidden;
+}
+::selection{background:var(--red);color:#0a0a0c;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+
+h1,h2,h3,.display{
+  font-family:'Anton',sans-serif;
+  font-weight:400;
+  letter-spacing:0.5px;
+  text-transform:uppercase;
+  line-height:1.04;
+}
+.eyebrow{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--red-soft);
+  font-size:13px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.eyebrow::before{
+  content:"";
+  width:26px;height:2px;
+  background:var(--red);
+  display:inline-block;
+}
+.eyebrow.center::before{display:none;}
+.wrap{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 28px;
+}
+section{
+  position:relative;
+  padding:72px 0;
+}
+.glow-text{
+  text-shadow:0 0 18px rgba(57,255,136,0.45), 0 0 46px rgba(57,255,136,0.2);
+}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+
+/* ---------- diagonal tape signature ---------- */
+.tape{
+  position:relative;
+  height:60px;
+  overflow:hidden;
+  background:repeating-linear-gradient(-35deg, var(--red) 0 34px, var(--card-hi) 34px 68px);
+  box-shadow:0 0 30px rgba(57,255,136,0.3) inset;
+}
+.tape span{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  background:var(--bg);
+  padding:6px 30px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  letter-spacing:5px;
+  font-size:13px;
+  color:var(--white);
+  white-space:nowrap;
+  border-top:2px solid var(--red);
+  border-bottom:2px solid var(--red);
+}
+
+/* ---------- header / nav ---------- */
+header{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:200;
+  background:rgba(10,11,12,0.88);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+nav{
+  max-width:1180px;
+  margin:0 auto;
+  padding:14px 28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand img{width:42px;height:42px;border-radius:50%;object-fit:cover;}
+.brand-name{font-family:'Anton',sans-serif;font-size:18px;letter-spacing:1px;}
+.brand-name span{color:var(--red);}
+.nav-links{
+  display:flex;gap:26px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:600;letter-spacing:1.5px;text-transform:uppercase;font-size:14px;
+}
+.nav-links a{color:var(--dim);transition:color .2s;padding-bottom:4px;border-bottom:2px solid transparent;}
+.nav-links a:hover{color:var(--white);}
+.nav-links a.active{color:var(--white);border-bottom-color:var(--red);}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 22px;background:var(--red);color:#0a0a0c;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;font-size:14px;border:none;cursor:pointer;
+  transition:transform .18s, box-shadow .18s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(57,255,136,0.4);}
+.btn.outline{background:transparent;border:1.5px solid var(--red);color:var(--white);}
+.btn.outline:hover{background:rgba(57,255,136,0.1);}
+.btn.ghost{background:transparent;color:var(--red-soft);border:1px solid var(--line);}
+.btn.ghost:hover{border-color:var(--red);}
+
+/* ---------- page hero (interior pages) ---------- */
+.page-hero{
+  padding:150px 0 64px;
+  background:
+    radial-gradient(ellipse 700px 400px at 85% 10%, rgba(57,255,136,0.14), transparent 60%),
+    var(--bg);
+  border-bottom:1px solid var(--line);
+}
+.page-hero h1{font-size:clamp(38px,6vw,64px);margin-top:14px;}
+.page-hero p{color:var(--dim);max-width:620px;margin-top:18px;font-size:17px;line-height:1.6;}
+.crumb{
+  font-family:'Barlow Condensed',sans-serif;
+  color:var(--dimmer);
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  font-size:12.5px;
+  margin-bottom:18px;
+}
+.crumb a{color:var(--dim);}
+.crumb a:hover{color:var(--red-soft);}
+
+/* ---------- section heads ---------- */
+.section-head{max-width:640px;margin-bottom:40px;}
+.section-head h2{font-size:clamp(32px,4.2vw,50px);margin-top:14px;}
+.section-head p{color:var(--dim);font-size:16px;margin-top:16px;line-height:1.6;}
+
+/* ---------- quote block (unused on this page, kept for shared styling) ---------- */
+.quote-block{background:var(--bg-2);}
+.quote-photo{background:var(--card);border:1px solid var(--line);padding:12px;position:relative;}
+.quote-photo .corner{position:absolute;width:30px;height:30px;}
+.quote-photo .corner.tl{top:-1px;left:-1px;border-top:3px solid var(--red);border-left:3px solid var(--red);}
+.quote-photo .corner.br{bottom:-1px;right:-1px;border-bottom:3px solid var(--red);border-right:3px solid var(--red);}
+.quote-mark{font-family:'Anton',sans-serif;font-size:64px;color:var(--red);line-height:0.4;display:block;margin-bottom:10px;}
+.quote-text{font-family:'Anton',sans-serif;font-size:clamp(22px,2.8vw,32px);line-height:1.3;text-transform:none;letter-spacing:0;}
+.quote-by{margin-top:22px;color:var(--dim);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;font-size:14px;}
+.quote-by b{color:var(--white);}
+
+/* ---------- CTA banner ---------- */
+.cta-banner{
+  background:
+    radial-gradient(ellipse 900px 500px at 50% 0%, rgba(57,255,136,0.16), transparent 60%),
+    var(--bg-2);
+  text-align:center;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.cta-banner h2{font-size:clamp(30px,4.4vw,52px);margin-top:14px;}
+.cta-banner p{color:var(--dim);max-width:560px;margin:18px auto 32px;font-size:16.5px;line-height:1.6;}
+
+/* ---------- icon list (about "what we do best") ---------- */
+.icon-list{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line);}
+.icon-item{background:var(--card);padding:32px 26px;}
+.icon-item .glyph{font-size:28px;margin-bottom:16px;display:block;}
+.icon-item h3{font-family:'Barlow',sans-serif;text-transform:none;font-weight:700;font-size:17px;margin-bottom:8px;}
+.icon-item p{color:var(--dim);font-size:14px;line-height:1.55;}
+
+/* ---------- about two-col ---------- */
+.about-split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.about-split img{border:1px solid var(--line);filter:grayscale(10%) contrast(1.05) brightness(0.95);width:100%;height:380px;object-fit:cover;}
+.about-split.reverse{direction:rtl;}
+.about-split.reverse > *{direction:ltr;}
+.about-split p{color:var(--dim);line-height:1.75;margin-bottom:16px;font-size:16px;}
+
+/* ---------- owner bio (about page) ---------- */
+.owner-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:60px;align-items:start;}
+.owner-photo{position:relative;display:flex;flex-direction:column;align-items:center;}
+.owner-photo .frame{
+  width:100%;
+  max-width:300px;
+  aspect-ratio:1/1;
+  border-radius:50%;
+  overflow:hidden;
+  border:3px solid var(--red);
+  box-shadow:0 12px 30px rgba(57,255,136,0.25);
+  background:var(--card);
+}
+.owner-photo .frame img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(10%) contrast(1.05) brightness(0.95);}
+.owner-tag{margin-top:22px;width:100%;max-width:300px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--red);padding:16px 20px;text-align:center;}
+.owner-tag div{font-family:'Anton',sans-serif;font-size:22px;}
+.owner-tag small{color:var(--dim);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;font-size:13px;}
+.owner-name{font-size:clamp(28px,3.6vw,42px);margin-bottom:6px;}
+.owner-role{color:var(--red-soft);font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:15px;margin-bottom:26px;}
+.owner-bio p{color:var(--dim);line-height:1.75;margin-bottom:16px;font-size:16px;}
+.cred-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin-top:28px;}
+.cred-grid .cred{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--line);font-size:14.5px;color:var(--white);}
+.cred-grid .cred b{font-family:'Anton',sans-serif;color:var(--red);font-size:15px;min-width:26px;}
+.titles-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+.title-pill{border:1px solid var(--red);background:rgba(57,255,136,0.12);color:var(--red-soft);font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:0.5px;text-transform:none;font-size:13px;padding:8px 14px;}
+
+/* ---------- owner sub-heads + specialized programs ---------- */
+.owner-subhead{font-family:'Barlow',sans-serif;text-transform:none;font-weight:700;font-size:19px;margin:30px 0 12px;color:var(--white);}
+.program-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+.program-pill{
+  border:1px solid var(--line);
+  background:var(--card-hi);
+  color:var(--white);
+  font-family:'Barlow',sans-serif;
+  font-weight:600;
+  font-size:13.5px;
+  padding:9px 16px;
+  display:flex;align-items:center;gap:8px;
+}
+.program-pill::before{content:"";width:7px;height:7px;background:var(--red);display:inline-block;transform:rotate(45deg);}
+.owner-closing{
+  margin-top:30px;
+  border:1px solid var(--line);
+  border-left:3px solid var(--red);
+  background:var(--card-hi);
+  padding:20px 24px;
+}
+.owner-closing p{margin-bottom:0;color:var(--dim);}
+.owner-closing p:last-child{margin-top:12px;color:var(--white);font-weight:600;}
+
+/* ---------- contact (shared styling, unused here) ---------- */
+.contact-row .ico{width:38px;height:38px;min-width:38px;border-radius:50%;background:rgba(57,255,136,0.14);color:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;}
+
+footer{padding:48px 0 28px;border-top:1px solid var(--line);background:var(--bg-2);}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;}
+.footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.footer-brand img{width:38px;height:38px;border-radius:50%;object-fit:cover;}
+.footer-brand span{font-family:'Anton',sans-serif;font-size:17px;}
+.footer-col h4{font-family:'Barlow Condensed',sans-serif;letter-spacing:1.5px;text-transform:uppercase;font-size:13px;color:var(--dim);margin-bottom:16px;}
+.footer-col a,.footer-col p{display:block;color:var(--dim);font-size:14px;margin-bottom:10px;word-break:break-word;}
+.footer-col a:hover{color:var(--red-soft);}
+.footer-bottom{border-top:1px solid var(--line);padding-top:22px;text-align:center;color:var(--dimmer);font-size:13.5px;}
+.footer-bottom b{color:var(--red-soft);}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .owner-grid, .about-split, .quote-grid{grid-template-columns:1fr;}
+  .about-split.reverse{direction:ltr;}
+  .icon-list{grid-template-columns:repeat(2,1fr);}
+  .nav-links{display:none;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+
+@media (max-width:600px){
+  .wrap{padding:0 18px;}
+  section{padding:52px 0;}
+  nav{padding:12px 18px;}
+  .brand-name{font-size:15px;}
+  .btn{padding:10px 16px;font-size:12.5px;}
+  .page-hero{padding:130px 0 48px;}
+  .page-hero h1{font-size:clamp(30px,9vw,44px);}
+  .about-split img{height:240px;}
+  .icon-list{grid-template-columns:1fr;}
+  .owner-photo .frame,.owner-tag{max-width:220px;}
+  .titles-row,.program-grid{justify-content:center;text-align:center;}
+  .cred-grid{grid-template-columns:1fr;}
+  .owner-closing{padding:18px 18px;}
+  .section-head{margin-bottom:28px;}
+
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:28px;
+    text-align:center;
+  }
+  .footer-brand{justify-content:center;}
+  .footer-brand p{margin-left:auto;margin-right:auto;}
+  .footer-col{display:flex;flex-direction:column;align-items:center;}
+  .footer-bottom{font-size:12.5px;padding-top:18px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand">
+      <img src="logo (1).png" alt="Ozone Fitness Planet logo">
+      <div class="brand-name">OZONE <span>FITNESS</span> PLANET</div>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="services.html">Services</a>
+      <a href="plans.html">Plans</a>
+      <a href="team.html">Team</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a class="btn" href="tel:8885005521">Call Now</a>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Home</a> / About</div>
+    <div class="eyebrow">Our Story</div>
+    <h1>About Ozone Fitness Planet</h1>
+    <p>Founded in Kurnool on one belief: real results come from real coaching, not fancy machines. Every program here is led by a trainer who has competed on stage himself.</p>
+  </div>
+</section>
+
+<section style="padding-bottom:36px;">
+  <div class="wrap about-split">
+    <div>
+      <div class="eyebrow">How We Started</div>
+      <h2 style="font-size:clamp(28px,3.6vw,42px);margin-top:14px;">Built On The Platform, Not Behind A Clipboard</h2>
+      <p>Ozone Fitness Planet was founded by Mr. Md. Khan Sab, a competitive bodybuilder with 25 years on the gym floor. Too many members were quitting on generic programs that ignored their actual health conditions — so Ozone was built to do the opposite.</p>
+      <p>Today, every member gets a plan shaped around their own body: medical history, current condition, and real goals — coached by a team that trains alongside you, not just from behind a desk.</p>
+    </div>
+    <div>
+      <img src="personal-training.jpg" alt="Coaching on the floor at Ozone Fitness Planet">
+    </div>
+  </div>
+</section>
+
+
+<section style="padding-top:36px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Our Approach</div>
+      <h2>What We Do Best</h2>
+      <p>Six pillars every Ozone program is built from.</p>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0 28px;">
+    <div class="icon-list">
+      <div class="icon-item"><span class="glyph">🏋️</span><h3>Strength Training</h3><p>Free-weights and machine work programmed for progressive, lasting gains.</p></div>
+      <div class="icon-item"><span class="glyph">🥗</span><h3>Nutrition Coaching</h3><p>Diet plans built from your actual medical reports, not generic templates.</p></div>
+      <div class="icon-item"><span class="glyph">👤</span><h3>Personal Training</h3><p>One-on-one coaching for members who want a trainer with them every rep.</p></div>
+      <div class="icon-item"><span class="glyph">🤸</span><h3>Group Classes</h3><p>Yoga, Zumba and cross-fit sessions for variety and community energy.</p></div>
+      <div class="icon-item"><span class="glyph">💆</span><h3>Recovery &amp; Massage</h3><p>Full-body massage sessions to keep muscles loose between training days.</p></div>
+      <div class="icon-item"><span class="glyph">🤝</span><h3>Ongoing Support</h3><p>Trainers track your progress and adjust the plan as your body changes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg-2);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Owner &amp; Head Coach</div>
+      <h2 style="text-transform:none;">Meet Mr. Md. Khan Sab</h2>
+    </div>
+    <div class="owner-grid">
+      <div class="owner-photo">
+        <div class="frame">
+          <img src="owner.png" alt="Mr. Md. Khan Sab — Owner and Head Coach">
+        </div>
+        <div class="owner-tag">
+          <div>48<span style="color:var(--red)">.</span></div>
+          <small>Years Young, 25 in the Iron Game</small>
+        </div>
+      </div>
+      <div>
+        <h3 class="owner-name" style="text-transform:none;">Mr. Md. Khan Sab</h3>
+        <div class="owner-role">Experience That Builds Champions</div>
+        <div class="owner-bio">
+          <p>For over 25 years, Mr. Khan has dedicated his life to transforming bodies, improving health, and inspiring confidence. Unlike trainers who simply instruct, he trains alongside every client — bringing unmatched motivation, discipline, and real-world expertise to every session.</p>
+          <p>A USA Advanced Certified Fitness Trainer (Level 1 &amp; Level 2 &amp; Level 3 — Anatomy &amp; Physiology) and proud member of the AP Body Building Association, Hyderabad, Mr. Khan combines international education with decades of hands-on coaching to deliver results that last.</p>
+          <p>Every title on his résumé represents years of discipline, consistency, and an unwavering commitment to excellence — qualities he now passes on to every individual he coaches.</p>
+        </div>
+
+        <div class="titles-row">
+          <span class="title-pill">🏆 Mr. India (Jr) 2012</span>
+          <span class="title-pill">🏆 Mr. Andhra 2009</span>
+          <span class="title-pill">🏆 Mr. Hyderabad 2010</span>
+          <span class="title-pill">🏅 Multiple Podium Finishes</span>
+          <span class="title-pill">📜 15+ Certifications</span>
+        </div>
+
+        <h4 class="owner-subhead">Science-Backed Fitness. Personalized For You.</h4>
+        <div class="owner-bio">
+          <p>As an ISSA Certified Nutritionist &amp; Dietitian (International Sports Sciences Association), Mr. Khan believes that no two bodies are the same. Every nutrition and fitness program is carefully designed after understanding your body composition, lifestyle, goals, and medical reports.</p>
+          <p>Whether you're looking to lose weight, build lean muscle, improve athletic performance, or simply become healthier, your plan is tailored specifically for you.</p>
+        </div>
+
+        <h4 class="owner-subhead">Specialized Health &amp; Transformation Programs</h4>
+        <div class="program-grid">
+          <span class="program-pill">Fat Loss &amp; Weight Management</span>
+          <span class="program-pill">Lean Muscle Gain &amp; Strength Building</span>
+          <span class="program-pill">Professional Bodybuilding Preparation</span>
+          <span class="program-pill">Diabetes Management</span>
+          <span class="program-pill">Thyroid Health Support</span>
+          <span class="program-pill">Blood Pressure-Friendly Nutrition</span>
+          <span class="program-pill">Hormonal Balance Programs</span>
+          <span class="program-pill">Lifestyle Transformation &amp; Wellness Coaching</span>
+        </div>
+
+        <div class="owner-closing">
+          <p><b style="color:var(--white);">More Than A Trainer — Your Transformation Partner.</b> Results don't come from shortcuts — they come from the right guidance, proven methods, and unwavering commitment. With over two decades of experience, international certifications, championship-level expertise, and a passion for changing lives, Mr. Khan has helped countless individuals become stronger, healthier, and more confident.</p>
+          <p>Your fitness journey deserves more than a trainer. It deserves a mentor who has lived the discipline, mastered the science, and remains committed to your success every step of the way.</p>
+        </div>
+
+        <div class="cred-grid">
+          <div class="cred"><b>01</b>USA Advanced Certified Trainer — Level 1 &amp; 2</div>
+          <div class="cred"><b>02</b>AP Body Building Association Member, Hyderabad</div>
+          <div class="cred"><b>03</b>15 Professional Certifications</div>
+          <div class="cred"><b>04</b>ISSA Certified Nutritionist &amp; Dietitian</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="wrap">
+    <div class="eyebrow center" style="justify-content:center;">Join Us</div>
+    <h2>Ready To Build Something Real?</h2>
+    <p>Tell us about your goals and we'll match you to the right program.</p>
+    <a class="btn" href="contact.html">Start Your Journey</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><img src="logo (1).png" alt="logo"><span>OZONE FITNESS PLANET</span></div>
+        <p style="max-width:280px;">Serious bodybuilding-grade coaching in the heart of Kurnool, led by a 25-year veteran trainer.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="team.html">Team</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="services.html">Services</a>
+        <a href="plans.html">Membership Plans</a>
+        <a href="testimonials.html">Testimonials</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>planetozonefitness07@gmail.com</p>
+        <p>8885005521 / 8885005543</p>
+        <p>2nd Floor, Nandyal check post, SJR Complex, above Maruthi Laminates, near Kendriya Vidhyalaya, Kalluru, Andhra Pradesh 518002</p>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 <b>Ozone Fitness Planet</b> — Kurnool. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
