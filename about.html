@@ -390,12 +390,14 @@ footer{padding:48px 0 28px;border-top:1px solid var(--line);background:var(--bg-
     var open = links.classList.toggle('open');
     btn.classList.toggle('open', open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
   });
   links.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){
       links.classList.remove('open');
       btn.classList.remove('open');
       btn.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
     });
   });
 })();
@@ -551,28 +553,6 @@ footer{padding:48px 0 28px;border-top:1px solid var(--line);background:var(--bg-
     <div class="footer-bottom">&copy; 2026 <b>Ozone Fitness Planet</b> — Kurnool. All rights reserved.</div>
   </div>
 </footer>
-
-<script>
-(function(){
-  var btn = document.getElementById('hamburger');
-  var links = document.querySelector('.nav-links');
-  if(!btn || !links) return;
-  btn.addEventListener('click', function(){
-    var open = links.classList.toggle('open');
-    btn.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  links.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      links.classList.remove('open');
-      btn.classList.remove('open');
-      btn.setAttribute('aria-expanded','false');
-      document.body.style.overflow = '';
-    });
-  });
-})();
-</script>
 
 </body>
 </html>

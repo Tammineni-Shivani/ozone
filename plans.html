@@ -599,26 +599,6 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
     var open = links.classList.toggle('open');
     btn.classList.toggle('open', open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  links.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      links.classList.remove('open');
-      btn.classList.remove('open');
-      btn.setAttribute('aria-expanded','false');
-    });
-  });
-})();
-</script>
-
-<script>
-(function(){
-  var btn = document.getElementById('hamburger');
-  var links = document.querySelector('.nav-links');
-  if(!btn || !links) return;
-  btn.addEventListener('click', function(){
-    var open = links.classList.toggle('open');
-    btn.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     document.body.style.overflow = open ? 'hidden' : '';
   });
   links.querySelectorAll('a').forEach(function(a){
