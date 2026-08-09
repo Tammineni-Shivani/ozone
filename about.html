@@ -381,7 +381,7 @@ footer{padding:48px 0 28px;border-top:1px solid var(--line);background:var(--bg-
       <a href="contact.html">Contact</a>
     </div>
 
-    <div class="nav-right">
+       <div class="nav-right">
       <a class="btn" href="tel:8885005521">Call Now</a>
       <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -389,6 +389,26 @@ footer{padding:48px 0 28px;border-top:1px solid var(--line);background:var(--bg-
     </div>
   </nav>
 </header>
+
+<script>
+(function(){
+  var btn = document.getElementById('hamburger');
+  var links = document.querySelector('.nav-links');
+  if(!btn || !links) return;
+  btn.addEventListener('click', function(){
+    var open = links.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      links.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+    });
+  });
+})();
+</script>
 
 <section class="page-hero">
   <div class="wrap">
