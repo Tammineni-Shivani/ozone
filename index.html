@@ -60,9 +60,9 @@ section{position:relative;padding:72px 0;}
 
 header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(10,11,12,0.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
 nav{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;}
-.brand{display:flex;align-items:center;gap:12px;}
-.brand img{width:42px;height:42px;border-radius:50%;}
-.brand-name{font-family:'Anton',sans-serif;font-size:18px;letter-spacing:1px;color:var(--white);}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;}
+.brand img{width:42px;height:42px;border-radius:50%;flex-shrink:0;}
+.brand-name{font-family:'Anton',sans-serif;font-size:18px;letter-spacing:1px;color:var(--white);white-space:nowrap;}
 .brand-name span{color:var(--red);}
 .nav-links{display:flex;gap:26px;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;font-size:14px;}
 .nav-links a{color:var(--dim);transition:color .2s;padding-bottom:4px;border-bottom:2px solid transparent;}
@@ -353,17 +353,25 @@ footer{padding:48px 0 28px;border-top:1px solid var(--line);background:var(--bg-
 @media (max-width:640px){
   section{padding:56px 0;}
   .wrap{padding:0 20px;}
-  .brand-name{font-size:15px;}
-  .brand img{width:34px;height:34px;}
   .btn{padding:10px 16px;font-size:12.5px;}
-  .nav-right{gap:8px;}
+  nav{padding:10px 16px;}
+  .brand{gap:9px;}
+  .brand-name{font-size:13.5px;letter-spacing:0.5px;overflow:hidden;text-overflow:ellipsis;}
+  .brand img{width:32px;height:32px;}
+  .nav-right .btn{padding:9px 14px;font-size:11.5px;letter-spacing:1.5px;white-space:nowrap;}
+  .nav-right{gap:8px;flex-shrink:0;}
+  .hamburger{width:34px;height:34px;flex-shrink:0;}
 
-  .hero{padding:130px 0 56px;}
+  .hero{padding:118px 0 52px;}
+  .hero-grid{padding-top:6px;}
+  .hero .eyebrow{font-size:11.5px;letter-spacing:2.5px;}
+  .hero h1{margin:14px 0 16px;}
   .hero p.lead{font-size:15.5px;}
-  .hero-ctas{flex-direction:column;}
-  .hero-ctas .btn{width:100%;justify-content:center;}
-  .hero-stats{flex-wrap:wrap;gap:20px;}
-  .hero-stats .stat{flex:1 1 40%;padding-right:0;}
+  .hero-ctas{flex-direction:column;margin-bottom:34px;}
+  .hero-ctas .btn{width:100%;justify-content:center;text-align:center;}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:22px 16px;flex-wrap:unset;}
+  .hero-stats .stat{padding-right:0;}
+  .hero-stats .stat b{font-size:26px;}
 
   .quick-links{grid-template-columns:1fr;margin-top:32px;}
   .services-grid,.why-grid,.icon-list,.trainers-grid{grid-template-columns:1fr;}
@@ -388,14 +396,28 @@ footer{padding:48px 0 28px;border-top:1px solid var(--line);background:var(--bg-
     margin-bottom:28px;
   }
   .footer-brand{justify-content:center;}
-  .footer-brand p, footer .footer-col p{margin-left:auto;margin-right:auto;}
+  .footer-brand p, footer .footer-col p, footer > .wrap > .footer-grid > div > p{max-width:320px;margin-left:auto;margin-right:auto;}
   .footer-col a,.footer-col p{font-size:14.5px;padding:4px 0;}
   .footer-col h4{margin-top:8px;}
   .footer-bottom{font-size:12.5px;padding-top:18px;line-height:1.6;}
 }
 
+@media (max-width:400px){
+  nav{padding:10px 14px;}
+  .brand{gap:7px;}
+  .brand img{width:28px;height:28px;}
+  .brand-name{font-size:11.5px;}
+  .nav-right{gap:6px;}
+  .nav-right .btn{padding:8px 11px;font-size:10.5px;letter-spacing:1px;}
+  .hamburger{width:30px;height:30px;}
+  .hamburger span{width:15px;}
+
+  .hero-stats{grid-template-columns:1fr 1fr;gap:18px 12px;}
+  .hero-stats .stat b{font-size:23px;}
+  .hero-stats .stat small{font-size:11px;}
+}
+
 </style>
-</head>
 <body>
 
 <header>
@@ -409,8 +431,8 @@ footer{padding:48px 0 28px;border-top:1px solid var(--line);background:var(--bg-
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
       <a href="plans.html">Plans</a>
-      <a href="team.html">Team</a>
-      <a href="testimonials.html">Testimonials</a>
+      <a href="Team.html">Team</a>
+      <a href="Testimonials.html">Testimonials</a>
       <a href="contact.html">Contact</a>
     </div>
     <div class="nav-right">
@@ -667,14 +689,14 @@ footer{padding:48px 0 28px;border-top:1px solid var(--line);background:var(--bg-
         <h4>Company</h4>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="team.html">Team</a>
+        <a href="Team.html">Team</a>
         <a href="contact.html">Contact</a>
       </div>
       <div class="footer-col">
         <h4>Explore</h4>
         <a href="services.html">Services</a>
         <a href="plans.html">Membership Plans</a>
-        <a href="testimonials.html">Testimonials</a>
+        <a href="Testimonials.html">Testimonials</a>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>

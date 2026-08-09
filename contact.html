@@ -111,10 +111,11 @@ nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:14px;
 }
-.brand{display:flex;align-items:center;gap:12px;}
-.brand img{width:42px;height:42px;border-radius:50%;}
-.brand-name{font-family:'Anton',sans-serif;font-size:18px;letter-spacing:1px;}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;}
+.brand img{width:42px;height:42px;border-radius:50%;flex-shrink:0;}
+.brand-name{font-family:'Anton',sans-serif;font-size:18px;letter-spacing:1px;white-space:nowrap;}
 .brand-name span{color:var(--red);}
 .nav-links{
   display:flex;gap:26px;
@@ -124,12 +125,14 @@ nav{
 .nav-links a{color:var(--dim);transition:color .2s;padding-bottom:4px;border-bottom:2px solid transparent;}
 .nav-links a:hover{color:var(--white);}
 .nav-links a.active{color:var(--white);border-bottom-color:var(--red);}
+.nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0;}
 .btn{
   display:inline-flex;align-items:center;gap:8px;
   padding:11px 22px;background:var(--red);color:#000;
   font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:2px;
   text-transform:uppercase;font-size:14px;border:none;cursor:pointer;
   transition:transform .18s, box-shadow .18s;
+  white-space:nowrap;
 }
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(57,255,20,0.4);}
 .btn.outline{background:transparent;border:1.5px solid var(--red);color:var(--white);}
@@ -178,8 +181,9 @@ nav{
   color:#fff;font-family:'Barlow Condensed',sans-serif;letter-spacing:2px;
   text-transform:uppercase;font-size:13px;font-weight:700;
   display:flex;align-items:center;gap:10px;
+  flex-wrap:wrap;
 }
-.page-hero.photo-bg .cap::before{content:"";width:26px;height:2px;background:var(--red);display:inline-block;}
+.page-hero.photo-bg .cap::before{content:"";width:26px;height:2px;background:var(--red);display:inline-block;flex-shrink:0;}
 
 /* ---------- quick links (home) ---------- */
 .quick-links{
@@ -438,6 +442,7 @@ nav{
 .field input,.field select,.field textarea{
   background:var(--bg);border:1px solid var(--line);color:var(--white);
   padding:12px 14px;font-family:'Barlow',sans-serif;font-size:14.5px;
+  width:100%;
 }
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--red);}
 .field textarea{resize:vertical;min-height:100px;}
@@ -452,6 +457,8 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
 .footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
 .footer-brand img{width:38px;height:38px;border-radius:50%;}
 .footer-brand span{font-family:'Anton',sans-serif;font-size:17px;}
+.footer-about{display:flex;flex-direction:column;}
+.footer-tagline{max-width:280px;margin:0 auto 0 0;color:var(--dim);font-size:14px;}
 .footer-col h4{font-family:'Barlow Condensed',sans-serif;letter-spacing:1.5px;text-transform:uppercase;font-size:13px;color:var(--dim);margin-bottom:16px;}
 .footer-col a,.footer-col p{display:block;color:var(--dim);font-size:14px;margin-bottom:10px;word-break:break-word;}
 .footer-col a:hover{color:var(--red-soft);}
@@ -466,11 +473,39 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
   background:transparent;
   color:var(--red);
   font-family:'Anton',sans-serif;
-  font-size:16px;
+  font-size:18px;
   align-items:center;justify-content:center;
   cursor:pointer;
+  flex-shrink:0;
+  line-height:1;
 }
-.mobile-panel{display:none;}
+.nav-toggle:hover{border-color:var(--red);}
+.mobile-panel{
+  display:none;
+  position:absolute;
+  top:100%;left:0;right:0;
+  background:rgba(5,7,5,0.98);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  flex-direction:column;
+  padding:10px 18px 22px;
+}
+.mobile-panel.open{display:flex;}
+.mobile-panel a{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:600;letter-spacing:1.5px;text-transform:uppercase;font-size:15px;
+  color:var(--dim);
+  padding:14px 4px;
+  border-top:1px solid var(--line);
+}
+.mobile-panel a:first-child{border-top:none;}
+.mobile-panel a:hover,.mobile-panel a.active{color:var(--white);}
+.mobile-panel a.active{color:var(--red-soft);}
+.mobile-panel .btn{
+  margin-top:14px;
+  justify-content:center;
+  width:100%;
+}
 
 /* ---------- responsive ---------- */
 @media (max-width:980px){
@@ -488,6 +523,8 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
   .form-row{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr 1fr;}
   .nav-links{display:none;}
+  .nav-toggle{display:flex;}
+  header{position:fixed;}
   .page-hero.photo-bg{padding:170px 0 80px;}
 }
 
@@ -495,8 +532,10 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
   .wrap{padding:0 18px;}
   section{padding:64px 0;}
   nav{padding:12px 18px;}
-  .brand-name{font-size:15px;}
-  .btn{padding:10px 16px;font-size:12.5px;}
+  .brand-name{font-size:14px;}
+  .brand img{width:36px;height:36px;}
+  .btn{padding:10px 14px;font-size:12px;}
+  .nav-toggle{width:36px;height:36px;font-size:16px;}
   .page-hero{padding:140px 0 56px;}
   .page-hero.photo-bg{padding:150px 0 64px;}
   .page-hero h1, .hero h1{font-size:clamp(30px,9vw,44px);}
@@ -511,6 +550,8 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
     text-align:center;
   }
   .footer-brand{justify-content:center;}
+  .footer-about{align-items:center;}
+  .footer-tagline{margin:0 auto;}
   .footer-col{display:flex;flex-direction:column;align-items:center;}
   .footer-bottom{font-size:12.5px;padding-top:20px;}
   .form-row{gap:12px;}
@@ -540,7 +581,20 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
       <a href="testimonials.html">Testimonials</a>
       <a href="contact.html" class="active">Contact</a>
     </div>
-    <a class="btn" href="tel:8885005521">Call Now</a>
+    <div class="nav-right">
+      <a class="btn" href="tel:8885005521">Call Now</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobilePanel">☰</button>
+    </div>
+    <div class="mobile-panel" id="mobilePanel">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="plans.html">Plans</a>
+      <a href="Team.html">Team</a>
+      <a href="Testimonials.html">Testimonials</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a class="btn" href="tel:8885005521">Call Now</a>
+    </div>
   </nav>
 </header>
 
@@ -644,22 +698,22 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
 <footer>
   <div class="wrap">
     <div class="footer-grid">
-      <div>
+      <div class="footer-about">
         <div class="footer-brand"><img src="logo (1).png" alt="Ozone Fitness Planet logo"><span>OZONE FITNESS PLANET</span></div>
-        <p style="max-width:280px;margin:0 auto 0 0;">Serious bodybuilding-grade coaching in the heart of Kurnool, led by a 25-year veteran trainer.</p>
+        <p class="footer-tagline">Serious bodybuilding-grade coaching in the heart of Kurnool, led by a 25-year veteran trainer.</p>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="team.html">Team</a>
+        <a href="Team.html">Team</a>
         <a href="contact.html">Contact</a>
       </div>
       <div class="footer-col">
         <h4>Explore</h4>
         <a href="services.html">Services</a>
         <a href="plans.html">Membership Plans</a>
-        <a href="testimonials.html">Testimonials</a>
+        <a href="Testimonials.html">Testimonials</a>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
@@ -678,6 +732,31 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
   const note = document.getElementById('formNote');
   note.textContent = "Thanks — this is a design preview so nothing was actually sent. Please call 8885005521 or email planetozonefitness07@gmail.com directly.";
   note.style.color = "var(--red-soft)";
+});
+
+// Mobile nav toggle
+const navToggle = document.getElementById('navToggle');
+const mobilePanel = document.getElementById('mobilePanel');
+navToggle.addEventListener('click', function(){
+  const isOpen = mobilePanel.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  navToggle.textContent = isOpen ? '✕' : '☰';
+});
+// Close mobile menu when a link is clicked
+mobilePanel.querySelectorAll('a').forEach(function(link){
+  link.addEventListener('click', function(){
+    mobilePanel.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.textContent = '☰';
+  });
+});
+// Close mobile menu on outside click
+document.addEventListener('click', function(e){
+  if(!e.target.closest('nav') && mobilePanel.classList.contains('open')){
+    mobilePanel.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.textContent = '☰';
+  }
 });
 </script>
 

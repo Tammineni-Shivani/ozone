@@ -145,6 +145,7 @@ nav{
   font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:2px;
   text-transform:uppercase;font-size:14px;border:none;cursor:pointer;
   transition:transform .18s, box-shadow .18s;
+  white-space:nowrap;
 }
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(57,255,20,0.4);}
 .btn.outline{background:transparent;border:1.5px solid var(--red);color:var(--white);}
@@ -543,10 +544,32 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
     margin-bottom:32px;
   }
   .footer-brand{justify-content:center;}
-  .footer-brand p, footer .footer-col p{margin-left:auto;margin-right:auto;}
+  .footer-grid p{margin-left:auto;margin-right:auto;}
   .footer-col a,.footer-col p{font-size:14.5px;padding:4px 0;}
   .footer-col h4{margin-top:8px;}
   .footer-bottom{font-size:12.5px;padding-top:20px;line-height:1.6;}
+}
+
+@media (max-width:430px){
+  /* Logo + brand text + Call button + hamburger no longer fit on one row
+     at small phone widths, which was squeezing/overlapping the header and
+     throwing off the space below it (making the hero look misaligned).
+     Shrink the brand and collapse "Call Now" to an icon-only button. */
+  nav{padding:10px 14px;}
+  .brand{gap:7px;}
+  .brand img{width:28px;height:28px;}
+  .brand-name{font-size:11.5px;letter-spacing:0.2px;}
+  .nav-right{gap:6px;}
+  .nav-right a.btn{
+    width:38px;height:38px;padding:0;
+    justify-content:center;
+    font-size:0;
+  }
+  .nav-right a.btn::before{
+    content:"\260E";
+    font-size:16px;
+    line-height:1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -568,8 +591,8 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
       <a href="plans.html" class="active">Plans</a>
-      <a href="team.html">Team</a>
-      <a href="testimonials.html">Testimonials</a>
+      <a href="Team.html">Team</a>
+      <a href="Testimonials.html">Testimonials</a>
       <a href="contact.html">Contact</a>
     </div>
     <div class="nav-right">
@@ -743,7 +766,7 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
         <h4>Company</h4>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="team.html">Team</a>
+        <a href="Team.html">Team</a>
         <a href="contact.html">Contact</a>
       </div>
       <div class="footer-col">
@@ -751,7 +774,7 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
         <a href="services.html">Services</a>
         <a href="plans.html">Membership Plans</a>
         <a href="services.html#supplements">Supplements</a>
-        <a href="testimonials.html">Testimonials</a>
+        <a href="Testimonials.html">Testimonials</a>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>

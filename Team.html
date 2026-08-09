@@ -109,9 +109,9 @@ nav{
   align-items:center;
   justify-content:space-between;
 }
-.brand{display:flex;align-items:center;gap:12px;}
-.brand img{width:42px;height:42px;border-radius:50%;object-fit:cover;}
-.brand-name{font-family:'Anton',sans-serif;font-size:18px;letter-spacing:1px;}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;}
+.brand img{width:42px;height:42px;border-radius:50%;object-fit:cover;flex:0 0 auto;}
+.brand-name{font-family:'Anton',sans-serif;font-size:18px;letter-spacing:1px;white-space:nowrap;}
 .brand-name span{color:var(--red);}
 .nav-links{
   display:flex;gap:26px;
@@ -121,7 +121,7 @@ nav{
 .nav-links a{color:var(--dim);transition:color .2s;padding-bottom:4px;border-bottom:2px solid transparent;}
 .nav-links a:hover{color:var(--white);}
 .nav-links a.active{color:var(--white);border-bottom-color:var(--red);}
-.nav-right{display:flex;align-items:center;gap:14px;}
+.nav-right{display:flex;align-items:center;gap:14px;flex:0 0 auto;}
 .hamburger{
   display:none;
   width:38px;height:38px;
@@ -131,6 +131,7 @@ nav{
   align-items:center;justify-content:center;
   flex-direction:column;gap:5px;
   padding:0;
+  flex:0 0 auto;
 }
 .hamburger span{width:18px;height:2px;background:var(--white);display:block;transition:transform .2s, opacity .2s;}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
@@ -142,6 +143,7 @@ nav{
   font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:2px;
   text-transform:uppercase;font-size:14px;border:none;cursor:pointer;
   transition:transform .18s, box-shadow .18s;
+  white-space:nowrap;
 }
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(57,255,20,0.4);}
 .btn.outline{background:transparent;border:1.5px solid var(--red);color:var(--white);}
@@ -278,6 +280,7 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
 .footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
 .footer-brand img{width:38px;height:38px;border-radius:50%;object-fit:cover;}
 .footer-brand span{font-family:'Anton',sans-serif;font-size:17px;}
+.footer-tagline{max-width:280px;}
 .footer-col h4{font-family:'Barlow Condensed',sans-serif;letter-spacing:1.5px;text-transform:uppercase;font-size:13px;color:var(--dim);margin-bottom:16px;}
 .footer-col a,.footer-col p{display:block;color:var(--dim);font-size:14px;margin-bottom:10px;}
 .footer-col a:hover{color:var(--red-soft);}
@@ -300,9 +303,9 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
     background:rgba(6,7,6,0.98);
     border-bottom:1px solid var(--line);
     max-height:0;overflow:hidden;
-    transition:max-height .28s ease;
+    transition:max-height .3s ease;
   }
-  .nav-links.open{max-height:420px;}
+  .nav-links.open{max-height:calc(100vh - 64px);overflow-y:auto;}
   .nav-links a{
     padding:16px 24px;border-bottom:1px solid var(--line);
     width:100%;box-sizing:border-box;
@@ -340,10 +343,18 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
     margin-bottom:32px;
   }
   .footer-brand{justify-content:center;}
-  .footer-brand p, footer .footer-col p{margin-left:auto;margin-right:auto;}
+  .footer-tagline{margin-left:auto;margin-right:auto;}
   .footer-col a,.footer-col p{font-size:14.5px;padding:4px 0;}
   .footer-col h4{margin-top:8px;}
   .footer-bottom{font-size:12.5px;padding-top:20px;line-height:1.6;}
+}
+
+@media (max-width:380px){
+  .brand-name{font-size:13px;}
+  .brand img{width:30px;height:30px;}
+  .brand{gap:8px;}
+  .btn{padding:9px 12px;font-size:11.5px;}
+  nav{padding:10px 14px;}
 }
 </style>
 </head>
@@ -382,12 +393,14 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
     var open = links.classList.toggle('open');
     btn.classList.toggle('open', open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
   });
   links.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){
       links.classList.remove('open');
       btn.classList.remove('open');
       btn.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
     });
   });
 })();
@@ -517,7 +530,7 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
     <div class="footer-grid">
       <div>
         <div class="footer-brand"><img src="logo (1).png" alt="logo"><span>OZONE FITNESS PLANET</span></div>
-        <p style="max-width:280px;">Serious bodybuilding-grade coaching in the heart of Kurnool, led by a 25-year veteran trainer.</p>
+        <p class="footer-tagline">Serious bodybuilding-grade coaching in the heart of Kurnool, led by a 25-year veteran trainer.</p>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
