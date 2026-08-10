@@ -151,12 +151,30 @@ nav{
 
 /* ---------- page hero (interior pages) ---------- */
 .page-hero{
+  position:relative;
   padding:170px 0 80px;
-  background:
-    radial-gradient(ellipse 700px 400px at 85% 10%, rgba(57,255,20,0.12), transparent 60%),
-    var(--bg);
+  background:var(--bg);
   border-bottom:1px solid var(--line);
+  overflow:hidden;
 }
+.hero-video{
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 20%;
+  z-index:0;
+}
+.hero-overlay{
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:100%;
+  z-index:1;
+  background:
+    radial-gradient(ellipse 700px 400px at 85% 10%, rgba(57,255,20,0.16), transparent 60%),
+    linear-gradient(180deg, rgba(6,7,6,0.72) 0%, rgba(6,7,6,0.55) 45%, rgba(10,10,10,0.92) 100%);
+}
+.page-hero .wrap{position:relative;z-index:2;}
 .page-hero h1{font-size:clamp(38px,6vw,64px);margin-top:14px;}
 .page-hero p{color:var(--dim);max-width:620px;margin-top:18px;font-size:17px;line-height:1.6;}
 .crumb{
@@ -268,7 +286,22 @@ nav{
 .trainers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
 .trainer-card{background:var(--card);border:1px solid var(--line);overflow:hidden;transition:border-color .2s, transform .2s;}
 .trainer-card:hover{border-color:var(--red-deep);transform:translateY(-6px);}
-.trainer-top{height:130px;background:radial-gradient(circle at 30% 20%, rgba(57,255,20,0.18), transparent 60%), var(--card-hi);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);}
+.trainer-top{
+  height:260px;
+  background:radial-gradient(circle at 30% 20%, rgba(57,255,20,0.18), transparent 60%), var(--card-hi);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.trainer-top img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:top center;
+  filter:grayscale(8%) contrast(1.05);
+}
 .trainer-initial{font-family:'Anton',sans-serif;font-size:44px;color:var(--red);opacity:0.9;}
 .trainer-body{padding:22px;}
 .trainer-body h3{font-family:'Barlow',sans-serif;font-weight:700;text-transform:none;font-size:19px;margin-bottom:6px;}
@@ -333,6 +366,7 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
   .slider-track{gap:14px;}
 
   .trainers-grid, .why-grid{grid-template-columns:1fr;}
+  .trainer-top{height:280px;}
 
   /* footer: clean single column, centered, generous tap targets */
   footer{padding:48px 0 24px;}
@@ -464,7 +498,7 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
     </div>
     <div class="trainers-grid">
       <div class="trainer-card">
-        <div class="trainer-top"><span class="trainer-initial">Z</span></div>
+        <div class="trainer-top"><img src="trainer-zubair.jpg" alt="Zubair Khan, Certified Personal Trainer"></div>
         <div class="trainer-body">
           <h3>Zubair Khan</h3>
           <div class="trainer-role">Certified Personal Trainer</div>
@@ -472,7 +506,7 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
         </div>
       </div>
       <div class="trainer-card">
-        <div class="trainer-top"><span class="trainer-initial">T</span></div>
+        <div class="trainer-top"><img src="trainer-tarun.jpg" alt="Tarun, Certified Trainer"></div>
         <div class="trainer-body">
           <h3>Tarun</h3>
           <div class="trainer-role">Certified Trainer</div>
@@ -480,7 +514,7 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
         </div>
       </div>
       <div class="trainer-card">
-        <div class="trainer-top"><span class="trainer-initial">S</span></div>
+        <div class="trainer-top"><img src="trainer-sudheer.jpg" alt="Sudheer, Certified Trainer"></div>
         <div class="trainer-body">
           <h3>Sudheer</h3>
           <div class="trainer-role">Certified Trainer</div>
@@ -488,9 +522,9 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:var(--bg-
         </div>
       </div>
       <div class="trainer-card">
-        <div class="trainer-top"><span class="trainer-initial">N</span></div>
+        <div class="trainer-top"><img src="trainer-deekshita.jpg" alt="Deekshita, Female Certified Trainer"></div>
         <div class="trainer-body">
-          <h3>Neha</h3>
+          <h3>Deekshita</h3>
           <div class="trainer-role">Female Certified Trainer</div>
           <div class="trainer-exp">Dedicated women's coaching</div>
         </div>
