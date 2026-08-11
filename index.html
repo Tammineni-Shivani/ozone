@@ -33,6 +33,7 @@ img{max-width:100%;display:block;}
 h1,h2,h3,.display{
   font-family:'Anton',sans-serif;font-weight:400;letter-spacing:0.5px;
   text-transform:uppercase;line-height:1.04;
+  text-wrap:balance;
 }
 .eyebrow{
   font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:4px;
@@ -240,7 +241,6 @@ nav{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:ce
 .titles-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
 .title-pill{border:1px solid var(--green-deep);background:rgba(198,255,61,0.14);color:var(--green-deep);font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:12.5px;padding:8px 14px;}
 
-/* ---------- owner sub-heads + specialized programs (moved here from about.html) ---------- */
 .owner-subhead{font-family:'Barlow',sans-serif;text-transform:none;font-weight:700;font-size:19px;margin:30px 0 12px;color:var(--white);}
 .program-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
 .program-pill{
@@ -264,7 +264,6 @@ nav{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:ce
 .owner-closing p{margin-bottom:0;color:var(--dim);}
 .owner-closing p:last-child{margin-top:12px;color:var(--white);font-weight:600;}
 
-/* ---------- owner training video ---------- */
 .owner-video-block{
   grid-column:1/-1;
   margin-top:46px;
@@ -362,7 +361,6 @@ nav{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:ce
 .form-note{margin-top:18px;color:var(--dimmer);font-size:13px;}
 .map-note{margin-top:26px;border:1px dashed var(--line);padding:20px;color:var(--dim);font-size:13.5px;display:flex;align-items:center;gap:12px;}
 
-/* testimonials grid (new, matches the same design language) */
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line);}
 .testi-card{background:var(--card);padding:32px 28px;display:flex;flex-direction:column;transition:background .2s;}
 .testi-card:hover{background:var(--card-hi);}
@@ -398,8 +396,7 @@ footer{padding:48px 0 28px;border-top:1px solid var(--line);background:var(--bg-
   .footer-grid{grid-template-columns:1fr 1fr;}
   .testi-grid{grid-template-columns:1fr;}
 
-  /* mobile dropdown nav */
-  .hamburger{display:flex;}
+  .hamburger{display:flex;width:42px;height:42px;}
   nav{padding:12px 20px;}
   .nav-links{
     display:flex;flex-direction:column;gap:0;
@@ -418,79 +415,140 @@ footer{padding:48px 0 28px;border-top:1px solid var(--line);background:var(--bg-
 }
 
 @media (max-width:640px){
-  section{padding:56px 0;}
+  section{padding:48px 0;}
   .wrap{padding:0 20px;}
-  .btn{padding:10px 16px;font-size:12.5px;}
+  .btn{padding:13px 20px;font-size:12.5px;letter-spacing:1.5px;}
   nav{padding:10px 16px;}
   .brand{gap:9px;}
-  .brand-name{font-size:13.5px;letter-spacing:0.5px;overflow:hidden;text-overflow:ellipsis;}
+  .brand-name{font-size:13px;letter-spacing:0.3px;overflow:hidden;text-overflow:ellipsis;}
   .brand img{width:32px;height:32px;}
-  .nav-right .btn{padding:9px 14px;font-size:11.5px;letter-spacing:1.5px;white-space:nowrap;}
+  .nav-right .btn{padding:10px 14px;font-size:11px;letter-spacing:1.2px;white-space:nowrap;}
   .nav-right{gap:8px;flex-shrink:0;}
-  .hamburger{width:34px;height:34px;flex-shrink:0;}
+  .hamburger{width:40px;height:40px;flex-shrink:0;}
 
-  .hero{padding:118px 0 52px;}
-  .hero-grid{padding-top:6px;}
-  .hero .eyebrow{font-size:11.5px;letter-spacing:2.5px;}
-  .hero h1{margin:14px 0 16px;}
-  .hero p.lead{font-size:15.5px;}
-  .hero-ctas{flex-direction:column;margin-bottom:34px;}
+  .eyebrow{font-size:11.5px;letter-spacing:2.5px;gap:8px;}
+  .eyebrow::before{width:20px;}
+  .section-head{margin-bottom:32px;}
+  .section-head h2{font-size:clamp(28px,8vw,36px);margin-top:10px;}
+  .section-head p{font-size:15px;margin-top:12px;line-height:1.6;}
+
+  .hero{padding:112px 0 44px;min-height:auto;}
+  .hero-grid{padding-top:4px;}
+  .hero .eyebrow{font-size:11px;letter-spacing:2px;}
+  .hero h1{font-size:clamp(32px,9.5vw,42px);line-height:1.12;margin:14px 0 14px;}
+  .hero p.lead{font-size:15px;line-height:1.6;margin-bottom:28px;}
+  .hero-ctas{flex-direction:column;gap:12px;margin-bottom:32px;}
   .hero-ctas .btn{width:100%;justify-content:center;text-align:center;}
-  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:22px 16px;flex-wrap:unset;}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px 16px;flex-wrap:unset;padding-top:20px;}
   .hero-stats .stat{padding-right:0;}
-  .hero-stats .stat b{font-size:26px;}
+  .hero-stats .stat b{font-size:24px;}
+  .hero-stats .stat small{font-size:11px;letter-spacing:1px;}
 
-  .quick-links{grid-template-columns:1fr;margin-top:32px;}
+  .quick-links{grid-template-columns:1fr;margin-top:28px;}
+  .quick-img{height:150px;}
+  .quick-body{padding:20px;gap:12px;}
+  .quick-link h3{font-size:16px;}
+
   .services-grid,.why-grid,.icon-list,.trainers-grid{grid-template-columns:1fr;}
+  .service-img,.why-img{height:170px;}
+  .service-body,.why-body{padding:20px;}
+  .service-card h3,.why-card h3{font-size:17px;margin:12px 0 8px;}
+  .service-card p,.why-card p{font-size:14px;line-height:1.6;}
+  .icon-item{padding:24px 20px;}
+  .trainer-body{padding:18px;}
+
   .supp-list{grid-template-columns:repeat(2,1fr);}
 
-  .quote-photo-wrap{width:110px;height:110px;min-width:110px;}
-  .quote-text{font-size:clamp(19px,5.5vw,24px);}
+  .quote-photo-wrap{width:100px;height:100px;min-width:100px;margin-bottom:20px;}
+  .quote-mark{font-size:44px;}
+  .quote-text{font-size:clamp(18px,5.5vw,22px);}
 
-  .owner-grid,.cred-grid{gap:24px;}
-  .cred-grid{grid-template-columns:1fr;}
-  .contact-card,.form-card{padding:24px;}
-  .detail-cols{gap:20px;}
-  .service-detail summary{padding:18px 20px;font-size:15.5px;}
+  .cta-banner h2{font-size:clamp(26px,8vw,34px);}
+  .cta-banner p{font-size:15px;margin:14px auto 26px;}
+
+  .plans-grid{gap:16px;}
+  .plan-head{padding:22px 20px 16px;}
+  .plan-rows{padding:6px 20px 20px;}
+  .plan-row{font-size:14px;padding:12px 0;}
+
+  .owner-grid,.cred-grid{gap:20px;}
+  .cred-grid{grid-template-columns:1fr;gap:8px;margin-top:20px;}
+  .owner-name{font-size:clamp(26px,8.5vw,32px);text-align:center;}
+  .owner-role{font-size:13px;letter-spacing:1.5px;text-align:center;margin-bottom:20px;}
+  .owner-bio p{font-size:15px;line-height:1.7;margin-bottom:14px;}
+  .owner-subhead{font-size:17px;margin:24px 0 10px;}
+  .contact-card,.form-card{padding:22px;}
+  .contact-row{padding:16px 0;}
+  .detail-cols{gap:18px;}
+  .service-detail summary{padding:18px 20px;font-size:15px;gap:10px;}
   .service-detail .detail-body{padding:0 20px 22px;}
+  .detail-cols p{font-size:14.5px;}
 
-  .owner-photo .frame,.owner-tag{max-width:190px;}
+  .owner-photo .frame,.owner-tag{max-width:180px;}
+  .owner-tag{padding:14px 16px;}
   .titles-row,.program-grid{justify-content:center;text-align:center;}
-  .owner-closing{padding:18px 18px;}
-  .owner-video-block{margin-top:36px;padding-top:32px;}
-  .video-frame{max-width:280px;}
+  .title-pill{font-size:11.5px;padding:7px 12px;}
+  .program-pill{font-size:12.5px;padding:8px 14px;}
+  .owner-closing{padding:16px;margin-top:24px;}
+  .owner-closing p{font-size:14.5px;}
+  .owner-video-block{margin-top:32px;padding-top:28px;}
+  .owner-video-block h3{font-size:clamp(20px,7vw,26px);margin:12px 0 18px;}
+  .video-frame{max-width:260px;}
+  .video-caption{font-size:14px;margin-top:18px;}
 
-  /* footer: clean single column, centered, generous tap targets */
-  footer{padding:44px 0 22px;}
+  footer{padding:40px 0 20px;}
   .footer-grid{
     grid-template-columns:1fr;
-    gap:30px;
+    gap:28px;
     text-align:center;
-    margin-bottom:28px;
+    margin-bottom:26px;
   }
   .footer-brand{justify-content:center;}
   .footer-brand p, footer .footer-col p, footer > .wrap > .footer-grid > div > p{max-width:320px;margin-left:auto;margin-right:auto;}
-  .footer-col a,.footer-col p{font-size:14.5px;padding:4px 0;}
-  .footer-col h4{margin-top:8px;}
-  .footer-bottom{font-size:12.5px;padding-top:18px;line-height:1.6;}
+  .footer-col a,.footer-col p{font-size:14px;padding:4px 0;}
+  .footer-col h4{margin-top:6px;font-size:12.5px;}
+  .footer-bottom{font-size:12px;padding-top:16px;line-height:1.6;}
 }
 
 @media (max-width:400px){
-  nav{padding:10px 14px;}
+  .wrap{padding:0 16px;}
+  nav{padding:9px 12px;}
   .brand{gap:7px;}
   .brand img{width:28px;height:28px;}
-  .brand-name{font-size:11.5px;}
+  .brand-name{font-size:10.5px;}
   .nav-right{gap:6px;}
-  .nav-right .btn{padding:8px 11px;font-size:10.5px;letter-spacing:1px;}
-  .hamburger{width:30px;height:30px;}
-  .hamburger span{width:15px;}
+  .nav-right .btn{padding:9px 10px;font-size:10px;letter-spacing:0.8px;}
+  .hamburger{width:38px;height:38px;}
+  .hamburger span{width:14px;}
 
-  .hero-stats{grid-template-columns:1fr 1fr;gap:18px 12px;}
-  .hero-stats .stat b{font-size:23px;}
-  .hero-stats .stat small{font-size:11px;}
+  .hero{padding:104px 0 40px;}
+  .hero h1{font-size:clamp(28px,9vw,34px);}
+  .hero p.lead{font-size:14px;}
+  .hero-stats{grid-template-columns:1fr 1fr;gap:16px 10px;}
+  .hero-stats .stat b{font-size:21px;}
+  .hero-stats .stat small{font-size:10px;letter-spacing:0.8px;}
+
+  .section-head h2{font-size:clamp(24px,8vw,30px);}
+  .section-head p{font-size:14px;}
+  .quick-body,.service-body,.why-body{padding:18px;}
+  .quick-img,.service-img,.why-img{height:135px;}
+  .icon-item{padding:20px 16px;}
+  .supp-list{grid-template-columns:repeat(2,1fr);}
+  .supp-item{padding:22px 14px;}
+
+  .owner-name{font-size:clamp(22px,9vw,26px);}
+  .owner-photo .frame,.owner-tag{max-width:160px;}
+  .titles-row{gap:8px;}
+  .title-pill{font-size:11px;padding:6px 10px;}
+  .program-pill{font-size:12px;padding:7px 12px;}
+  .video-frame{max-width:220px;}
+
+  .plan-head h3{font-size:20px;}
+  .plan-row .price{font-size:15px;}
 }
 
 </style>
+</head>
 <body>
 
 <header>
