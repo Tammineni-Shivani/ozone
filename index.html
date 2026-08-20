@@ -95,6 +95,7 @@ nav{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:ce
   linear-gradient(to top, rgba(4,10,7,0.5) 0%, rgba(4,10,7,0) 34%),
   url('hero-bg.jpg');
   background-size:cover;background-position:78% 6%;background-repeat:no-repeat;background-color:var(--bg);min-height:740px;overflow:hidden;}
+.hero-photo-layer{display:none;}
 .hero-grid{position:relative;z-index:2;max-width:clamp(340px,46vw,620px);padding-bottom:56px;}
 .hero .wrap{margin:0;max-width:none;padding-left:clamp(28px,5vw,80px);padding-right:20px;}
 .hero .eyebrow{color:var(--red-soft);margin-bottom:8px;}
@@ -392,28 +393,36 @@ footer{padding:56px 0 28px;border-top:1px solid var(--line);background:var(--bg-
   .section-head h2{font-size:clamp(24px,7vw,30px);}
   .section-head p{font-size:14.5px;}
 
-  /* ---- hero banner: full image visible, text overlaid on top of it (like the desktop template) ---- */
+  /* ---- hero banner: real <img> layer with object-fit for a reliable, non-jumpy crop on any phone ---- */
   .hero{
-    display:block;
-    min-height:auto;
+    display:flex;
+    align-items:flex-end;
+    min-height:88vh;
+    min-height:88dvh; /* stops the crop shifting when the mobile address bar shows/hides */
     padding:0;
-    padding-top:62.5vw; /* reserves exact height for the full-width image (hero photo is ~8:5) */
-    background-image:url('hero-bg.jpg');
-    background-size:contain;
-    background-position:top center;
-    background-repeat:no-repeat;
-    background-color:var(--bg);
     position:relative;
+    background:none;
+    background-color:var(--bg);
     overflow:hidden;
   }
-  .hero::after{
+  .hero-photo-layer{
+    display:block;
+    position:absolute;
+    inset:0;
+    z-index:0;
+  }
+  .hero-photo-layer img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:70% center; /* image is wide with subjects right-of-center — this keeps them in frame on tall phone screens */
+    display:block;
+  }
+  .hero-photo-layer::after{
     content:"";
     position:absolute;
-    top:0;left:0;right:0;
-    height:62.5vw;
-    background:linear-gradient(180deg, rgba(4,10,7,0) 0%, rgba(4,10,7,0) 32%, rgba(4,10,7,0.5) 55%, rgba(4,10,7,0.85) 78%, var(--bg) 100%);
-    z-index:1;
-    pointer-events:none;
+    inset:0;
+    background:linear-gradient(180deg, rgba(4,10,7,0.25) 0%, rgba(4,10,7,0.35) 40%, rgba(4,10,7,0.92) 100%);
   }
   .hero-grid{
     position:relative;
@@ -421,8 +430,8 @@ footer{padding:56px 0 28px;border-top:1px solid var(--line);background:var(--bg-
     width:100%;
     max-width:100%;
     box-sizing:border-box;
-    margin-top:-30vw; /* pulls the text up so it overlays the lower (darkened) part of the image */
-    padding:0 0 40px;
+    padding:24px 0 44px;
+    margin:0;
   }
   .hero .wrap{width:100%;box-sizing:border-box;margin:0;padding-left:20px;padding-right:20px;}
   .hero h1{font-size:clamp(30px,10vw,40px);margin:8px 0 16px;}
@@ -466,6 +475,7 @@ footer{padding:56px 0 28px;border-top:1px solid var(--line);background:var(--bg-
   .nav-right .btn{padding:9px;width:36px;height:36px;justify-content:center;font-size:15px;}
   .brand-name{font-size:16.5px;}
   .brand img{width:28px;height:28px;}
+  .hero{min-height:82vh;}
   .hero h1{font-size:clamp(26px,10vw,32px);}
   .supp-list{grid-template-columns:1fr 1fr;}
 }
@@ -500,6 +510,9 @@ footer{padding:56px 0 28px;border-top:1px solid var(--line);background:var(--bg-
 <!-- ============ HOME ============ -->
 <div class="page" id="page-home">
   <section class="hero">
+    <div class="hero-photo-layer">
+      <img src="hero-bg.jpg" alt="">
+    </div>
     <div class="wrap hero-grid">
       <div class="eyebrow">Build Strength,</div>
       <h1>TRANSFORM<span class="line2">YOURSELF</span></h1>
