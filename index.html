@@ -392,17 +392,28 @@ footer{padding:56px 0 28px;border-top:1px solid var(--line);background:var(--bg-
   .section-head h2{font-size:clamp(24px,7vw,30px);}
   .section-head p{font-size:14.5px;}
 
-  /* ---- hero banner: image is the actual background, text overlays the bottom ---- */
+  /* ---- hero banner: FULL image visible up top (both people, no side-crop), text sits below on solid bg ---- */
   .hero{
-    display:flex;
-    align-items:flex-end;
-    min-height:100vh;
+    display:block;
+    min-height:auto;
     padding:0;
-    background-image:linear-gradient(180deg, rgba(4,10,7,0.20) 0%, rgba(4,10,7,0.30) 38%, rgba(4,10,7,0.72) 68%, rgba(4,10,7,0.95) 100%), url('hero-bg.jpg');
-    background-size:cover;
-    background-position:60% top;
+    padding-top:62.5vw; /* reserves exact height for the full-width image (hero photo is ~8:5) */
+    background-image:url('hero-bg.jpg');
+    background-size:contain;
+    background-position:top center;
     background-repeat:no-repeat;
     background-color:var(--bg);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:62.5vw;
+    background:linear-gradient(180deg, rgba(4,10,7,0) 0%, rgba(4,10,7,0) 58%, rgba(4,10,7,0.6) 84%, var(--bg) 100%);
+    z-index:1;
+    pointer-events:none;
   }
   .hero-grid{
     position:relative;
@@ -410,7 +421,7 @@ footer{padding:56px 0 28px;border-top:1px solid var(--line);background:var(--bg-
     width:100%;
     max-width:100%;
     box-sizing:border-box;
-    padding:24px 0 44px;
+    padding:26px 0 44px;
     margin:0;
   }
   .hero .wrap{width:100%;box-sizing:border-box;margin:0;padding-left:20px;padding-right:20px;}
@@ -455,7 +466,6 @@ footer{padding:56px 0 28px;border-top:1px solid var(--line);background:var(--bg-
   .nav-right .btn{padding:9px;width:36px;height:36px;justify-content:center;font-size:15px;}
   .brand-name{font-size:16.5px;}
   .brand img{width:28px;height:28px;}
-  .hero{min-height:100vh;}
   .hero h1{font-size:clamp(26px,10vw,32px);}
   .supp-list{grid-template-columns:1fr 1fr;}
 }
